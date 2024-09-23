@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class PostreService {
+public class PostreService implements ComidaService<Postre,PostreDTO> {
 
     @Autowired
     private PostreRepository comidaRepository;

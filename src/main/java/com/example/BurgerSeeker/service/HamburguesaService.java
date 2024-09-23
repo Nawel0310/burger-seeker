@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class HamburguesaService {
+public class HamburguesaService implements ComidaService<Hamburguesa,HamburguesaDTO> {
 
     @Autowired
     private HamburguesaRepository comidaRepository;

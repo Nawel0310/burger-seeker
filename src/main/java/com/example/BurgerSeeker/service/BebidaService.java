@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class BebidaService {
+public class BebidaService implements ComidaService<Bebida,BebidaDTO> {
 
     @Autowired
     private BebidaRepository comidaRepository;
