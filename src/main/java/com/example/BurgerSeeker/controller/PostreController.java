@@ -18,10 +18,5 @@ public class PostreController extends ComidaController<Postre,PostreDTO> {
 
     @Autowired
     private PostreService postreService;
-
-    @PostConstruct
-    public void init() {
-        this.comidaService = postreService;
-    }
     
 }

@@ -18,8 +18,4 @@ public class HamburguesaController extends ComidaController<Hamburguesa, Hamburg
     @Autowired
     private HamburguesaService hamburguesaService;
 
-    @PostConstruct
-    public void init() {
-        this.comidaService = hamburguesaService;
-    }
 }

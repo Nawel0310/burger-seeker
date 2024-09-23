@@ -20,9 +20,4 @@ public class BebidaController extends ComidaController<Bebida,BebidaDTO>{
     @Autowired
     private BebidaService bebidaService;
 
-    @PostConstruct
-    public void init() {
-        this.comidaService = bebidaService;
-    }
-
 }
