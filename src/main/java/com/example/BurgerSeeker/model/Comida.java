@@ -19,7 +19,7 @@ public abstract class Comida {
     private String nombre;
 
     @Column(nullable = false)
-    private Integer precio;
+    private Float precio;
 
     @Column(columnDefinition = "LONGTEXT",nullable = false)
     private String descripcion;

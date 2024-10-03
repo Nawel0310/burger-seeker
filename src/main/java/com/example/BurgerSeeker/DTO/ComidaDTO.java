@@ -8,7 +8,7 @@ import lombok.Setter;
 public class ComidaDTO  {
     private Integer id;
     private String nombre;
-    private Integer precio;
+    private Float precio;
     private String descripcion;
     private ImagenDTO imagenDTO;
 }

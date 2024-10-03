@@ -22,7 +22,7 @@ public class Imagen {
     private String tipo;
 
     @Lob
-    @Column(name="datos_imagen",nullable = false)
+    @Column(name="datos_imagen",nullable = false, columnDefinition = "LONGBLOB")
     private byte[] datos;
 
 }
