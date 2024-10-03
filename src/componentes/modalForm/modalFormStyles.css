@@ -1,0 +1,22 @@
+.label-div {
+    margin-bottom: 1rem;
+  }
+  
+  .btn-modal {
+    margin-left: 1rem;
+  }
+  
+  .titulo-label {
+    color: #ebe9fc;
+  }
+  
+  #titulo-modal {
+    background: linear-gradient(90deg, #FFF078, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .img-input {
+    background: #FFDB00!important;
+    color: var(--bs-body-bg)!important;
+  }

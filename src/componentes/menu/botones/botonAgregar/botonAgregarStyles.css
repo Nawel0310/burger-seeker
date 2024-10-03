@@ -1,0 +1,15 @@
+#btn-agregar-comida {
+    background: linear-gradient(67deg, #005b41 0%, #008170 100%);
+    color: #ebe9fc;
+    border-style: none;
+    transition: color 0.5s ease;
+    font-weight: 650;
+  }
+  
+  #btn-agregar-comida:hover {
+    background: linear-gradient(67deg, #008170 0%, #41b3a2 100%);
+    color: #ebe9fc;
+    border-style: none;
+    transition: color 0.5s ease;
+    font-weight: 650;
+  }

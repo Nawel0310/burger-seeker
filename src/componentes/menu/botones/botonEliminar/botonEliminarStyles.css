@@ -1,0 +1,12 @@
+.btn-eliminar {
+    background: linear-gradient(67deg, #C7253E 0%, #821131 100%);
+    color: #ebe9fc;
+    border-style: none!important;
+    transition: color 0.5s ease;
+    font-weight: 650;
+  }
+  
+
+.btn-eliminar:hover {
+    background: #E4003A;
+  }

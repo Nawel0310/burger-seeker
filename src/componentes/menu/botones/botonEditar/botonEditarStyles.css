@@ -1,0 +1,11 @@
+.btn-editar {
+    background: linear-gradient(67deg, #3fa2f6 0%, #0f67b1 100%);
+    color: #ebe9fc;
+    border-style: none!important;
+    transition: color 0.5s ease;
+    font-weight: 650;
+  }
+  
+.btn-editar:hover {
+    background: #1B3C73;
+  }

@@ -1,0 +1,28 @@
+.card-menu-body {
+    background: url("/src/assets/circulosScatter.svg") center / cover no-repeat, radial-gradient(#232d3f 0%, #0f0f0f 100%);
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+.card-menu {
+    border-radius: 15px;
+  }
+  
+.card-menu-titulo {
+    background: linear-gradient(90deg, #FFF078, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+.col-card-menu {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+.imagen-card-comida {
+    width: 15rem;
+  }
+
+.menu-card-subtitulo {
+    color: #FFF078!important;
+  }

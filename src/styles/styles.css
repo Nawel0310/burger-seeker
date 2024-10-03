@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.navbar-item:hover, .navbar-item:focus {
+    background: linear-gradient(90deg,#FFF078, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .navbar-item {
+    font-family: Poppins, sans-serif;
+    color: #FFDB00;
+    font-size: 1.3rem!important;
+    margin-right: 2rem;
+    transition: color 0.3s ease;
+    background: linear-gradient(90deg,#FF8F00, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #dropdown-navbar {
+    margin: 0px;
+    text-decoration: none;
+  }
+  
+  .titulo {
+    font-family: Anton, sans-serif;
+  }
+  
+  .subtitulo {
+    font-family: Poppins, sans-serif;
+  }
+  
+  .parrafo {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .menu-item:active {
+  }
+  
+  #titulo-hero {
+    font-size: 3rem;
+    font-size: 3rem;
+    background: linear-gradient(90deg, #FFF078, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #subtitulo-hero {
+    color: #ebe9fc;
+    font-size: 1rem;
+  }
+  
+
+  .btn-generico {
+    border-radius: 30px;
+    font-weight:650;
+  }
+  
+  .btn-degradado {
+    background: linear-gradient(67deg, #FF8F00 0%, #FFDB00 100%);
+    color: #000000;
+    border-style: none;
+    transition: color 0.5s ease;
+    font-weight:650;
+  }
+  
+  .btn-degradado:hover {
+    background: linear-gradient(33deg, #FFDB00 21%, #FFF078 100%);
+    color: #000000;
+    font-weight:650;
+  }
+  
+  .btn-sin-fondo {
+    color: #FF8F00;
+    border-color: #FF8F00;
+    font-weight:650;
+  }
+  
+  .imagen-hero {
+    width: 100%;
+    height: auto;
+  }
+  
+  #dropdown-menu-background {
+    background: linear-gradient(#0F0F0F 1%, #232D3F 150%), #232D3F;
+    border-style: solid;
+    border-color: #FF8F00;
+    border-radius: 15px;
+  }
+  
+  #brandLogo {
+    height: 3rem;
+  }
+  
+  #footer {
+    background: linear-gradient(135deg, #232D3F 0%, #0F0F0f 100%);
+  }
+  
+  #navbar {
+    background: linear-gradient(92deg, #0F0F0F 0%, #232D3F);
+  }
+  
+  .icono-footer {
+    color: #FFDB00!important;
+    font-size: 3rem;
+  }
+  
+  #subtitulo-footer {
+    color: #FF8F00!important;
+    margin-bottom: 1rem;
+  }
+  
+  #parrafo-footer {
+    font-style: italic;
+  }
+  
+  #desc-modal {
+    color: #FF8F00;
+  }
+  
+  .top-modal {
+  }
+  
+  .bottom-modal {
+    border-style: none;
+  }
+  
+  #modal-cuerpo {
+    background: linear-gradient(#0F0F0F 0%, #232D3F 108%);
+  }
+  
+  #modal-aviso-navbar .modal-content {
+    background-color: transparent;
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .navbar-toggler {
+    border-color: #FF8F00;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23FFDB00' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+  #hero{
+    background: url('/src/assets/hero_background.webp') center / cover no-repeat;
+  }
+
+  #introHero{
+    max-width: 400px;
+  }
+
+  .btn-hero {
+    margin-bottom: 0.5rem;
+    font-weight:650;
+  }
