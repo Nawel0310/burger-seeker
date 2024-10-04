@@ -4,7 +4,7 @@ import './CardComidaStyles.css'
 
 
 
-const CardComida = ({comida, onEliminarComida, onEditarComida}) => {
+const CardComida = ({comida, onEliminarComida, onEditarComida,...props}) => {
 
     const handleEliminarComida=()=>{
         if (window.confirm(`¿Está seguro que desea eliminar "${comida.nombre}"?`)){
@@ -13,7 +13,7 @@ const CardComida = ({comida, onEliminarComida, onEditarComida}) => {
     }
 
     return (
-        <div class="col col-card-menu">
+        <div class="col col-card-menu" {...props}>
             <div class="card border-warning card-menu" data-bs-theme="dark">
                 <div class="card-body card-menu-body">
                     <div class="d-flex justify-content-center">

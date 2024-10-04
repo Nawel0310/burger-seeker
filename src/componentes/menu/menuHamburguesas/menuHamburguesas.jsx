@@ -6,6 +6,8 @@ import { obtenerComida } from "../../../utils/obtenerComidaUtils";
 import { eliminarComida } from "../../../utils/eliminarComidaUtils";
 import { dividirEnFilas } from "../../../utils/dividirEnFilasUtils";
 import '../menuComidaStyles.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MenuHamburguesas = () =>{
 
@@ -39,8 +41,13 @@ const MenuHamburguesas = () =>{
 
     //Usamos useEffect para actualizar el estado del componente cuando este se renderiza
     useEffect(() => {
+
+        AOS.init({
+            duration: 1000, // Duración de la animación en milisegundos
+        });
         obtenerHamburguesas();
     },[])
+
 
     return (
         <section id="seccionMenu" className="d-flex flex-column justify-content-start align-content-center">
@@ -60,7 +67,15 @@ const MenuHamburguesas = () =>{
                 {dividirEnFilas(hamburguesas, 3).map((fila, filaIndex) => (
                     <div className="row row-comidas" key={filaIndex}>
                         {fila.map((hamburguesa, index) => (
-                            <CardComida key={index} comida={hamburguesa} onEliminarComida={eliminarHamburguesa} onEditarComida={editarHamburguesa}/>))}
+                            <CardComida 
+                            key={index} 
+                            comida={hamburguesa} 
+                            onEliminarComida={eliminarHamburguesa} 
+                            onEditarComida={editarHamburguesa}
+                            data-aos="fade-up"   
+                            data-aos-delay={`${index * 100}`}
+                            />))
+                            }
                     </div>
             ))}
         </div>
