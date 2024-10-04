@@ -8,7 +8,7 @@ const ModalForm=({comida,onComidaCargada})=>{
     const [nombre, setNombre] = useState(comida ? comida.nombre : '');
     const [descripcion, setDescripcion] = useState(comida ? comida.descripcion : '');
     const [precio, setPrecio] = useState(comida ? comida.precio : 0);
-    const [imagen, setImagen] = useState(null);
+    const [imagen, setImagen] = useState(comida ? comida.imagen: null);
     const [tipoComida, setTipoComida] = useState('1');
 
 
@@ -80,6 +80,10 @@ const ModalForm=({comida,onComidaCargada})=>{
             }
         };
 
+        if (comida && comida.id) {
+            comidaDTO.id = comida.id;
+        }
+
         //Determinamos la URL a enviar según el tipo de comida.
         let url = '';
         switch (tipoComida) {
@@ -98,10 +102,14 @@ const ModalForm=({comida,onComidaCargada})=>{
 
         //Tratamos de enviar la solicitud con fetch
         try{
-            let urlFetch = 'http://localhost:8080'+ url;
+            const metodoHTTP= comidaDTO.id? 'PUT' : 'POST';
+
+            const urlFetch = comidaDTO.id
+            ? `http://localhost:8080${url}/${comidaDTO.id}` // Actualiza la comida con el ID
+            : `http://localhost:8080${url}`; // Crea una nueva comida
 
             const response = await fetch (urlFetch,{
-                method:'POST',
+                method: metodoHTTP,
                 headers:{
                     'Content-Type':'application/json',
                 },
