@@ -6,7 +6,8 @@ const BotonEditar= ({comida,onEditarComidaBtn}) => {
         <button class="btn btn-primary d-flex flex-row justify-content-center align-items-center btn-generico parrafo btn-editar" 
         type="submit"
         data-bs-toggle="modal"
-        data-bs-target="#modalEdicionForm"
+        data-bs-target="#modalForm"
+        onClick={()=>onEditarComidaBtn(comida)}
         >Editar <i class="fa fa-edit"></i></button>
     )
 

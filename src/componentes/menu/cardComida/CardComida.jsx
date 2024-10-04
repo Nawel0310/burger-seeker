@@ -22,7 +22,7 @@ const CardComida = ({comida, onEliminarComida, onEditarComida}) => {
                     <h4 class="card-subtitle mb-2 subtitulo menu-card-subtitulo">${comida.precio}</h4>
                     <p class="card-text parrafo">{comida.descripcion}</p>
                     <div class="d-flex flex-row justify-content-evenly">
-                        <BotonEditar onEditarComidaBtn={onEditarComida}></BotonEditar>
+                        <BotonEditar comida={comida} onEditarComidaBtn={onEditarComida}></BotonEditar>
                         <BotonEliminar onEliminarComidaBtn={handleEliminarComida}></BotonEliminar>
                         </div>
                 </div>

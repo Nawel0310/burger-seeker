@@ -1,15 +1,15 @@
 import './modalFormStyles.css'
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 
 
-const ModalForm=({onComidaCargada})=>{
+const ModalForm=({comida,onComidaCargada})=>{
 
-    //Estados del formulario:
-    const [nombre,setNombre]=useState('');
-    const [descripcion,setDescripcion]=useState('');
-    const [precio,setPrecio]=useState(0);
-    const [imagen,setImagen]=useState(null);
-    const [tipoComida,setTipoComida]=useState('1');
+    // Si comida está definida, usamos sus datos, sino se deja valores por defecto
+    const [nombre, setNombre] = useState(comida ? comida.nombre : '');
+    const [descripcion, setDescripcion] = useState(comida ? comida.descripcion : '');
+    const [precio, setPrecio] = useState(comida ? comida.precio : 0);
+    const [imagen, setImagen] = useState(null);
+    const [tipoComida, setTipoComida] = useState('1');
 
 
     //Función para comprimir la imagen:
@@ -120,6 +120,15 @@ const ModalForm=({onComidaCargada})=>{
             window.alert('Error al guardar la comida');
         }
     };
+
+    //Cada vez que se produce un cambio en comida, se actualiza dicho cambio
+    useEffect(() => {
+        if (comida) {
+            setNombre(comida.nombre);
+            setDescripcion(comida.descripcion);
+            setPrecio(comida.precio);
+        }
+    }, [comida]);
 
 
     return(

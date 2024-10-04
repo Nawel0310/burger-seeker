@@ -8,6 +8,7 @@ const MenuHamburguesas = () =>{
 
     const [hamburguesas,setHamburguesas] = useState([]);
     const [error, setError] = useState(null);
+    const [comidaSeleccionada, setComidaSeleccionada] = useState(null);
 
     const obtenerHamburguesas = async () => {
         try {
@@ -45,6 +46,11 @@ const MenuHamburguesas = () =>{
     };
 
 
+    const editarComida = (comida)=>{
+        setComidaSeleccionada(comida);
+    };
+
+
     //Usamos useEffect para actualizar el estado del componente cuando este se renderiza
     useEffect(() => {
         obtenerHamburguesas();
@@ -70,14 +76,14 @@ const MenuHamburguesas = () =>{
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 col-xxl-2 d-flex flex-row justify-content-center align-items-center align-content-center col-botones">
                     <div>
                     <BotonAgregar></BotonAgregar>
-                    <ModalForm onComidaCargada={obtenerHamburguesas}></ModalForm>
+                    <ModalForm comida={comidaSeleccionada} onComidaCargada={obtenerHamburguesas}></ModalForm>
                     </div>
                 </div>
             </div>
                 {dividirEnFilas(hamburguesas, 3).map((fila, filaIndex) => (
                     <div className="row row-comidas" key={filaIndex}>
                         {fila.map((hamburguesa, index) => (
-                            <CardComida key={index} comida={hamburguesa} onEliminarComida={eliminarComida}/>))}
+                            <CardComida key={index} comida={hamburguesa} onEliminarComida={eliminarComida} onEditarComida={editarComida}/>))}
                     </div>
             ))}
         </div>
