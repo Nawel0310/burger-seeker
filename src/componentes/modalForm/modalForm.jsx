@@ -1,6 +1,7 @@
 import './modalFormStyles.css'
 import React, {useState,useEffect} from 'react';
-
+import { crearComidaDTO } from '../../utils/crearComidaUtil';
+import { comidaSubmit } from '../../utils/comidaSubmitUtils';
 
 const ModalForm=({comida,onComidaCargada})=>{
 
@@ -11,123 +12,14 @@ const ModalForm=({comida,onComidaCargada})=>{
     const [imagen, setImagen] = useState(comida ? comida.imagen: null);
     const [tipoComida, setTipoComida] = useState('1');
 
-
-    //Función para comprimir la imagen:
-    const getImagenBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const img = new Image();
-                img.src = reader.result;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-    
-                    // Redimensionar la imagen
-                    const maxWidth = 480; // Ajusta este valor según lo que necesites
-                    const maxHeight = 480; // Ajusta este valor según lo que necesites
-                    let width = img.width;
-                    let height = img.height;
-    
-                    // Mantener la relación de aspecto
-                    if (width > height) {
-                        if (width > maxWidth) {
-                            height *= maxWidth / width;
-                            width = maxWidth;
-                        }
-                    } else {
-                        if (height > maxHeight) {
-                            width *= maxHeight / height;
-                            height = maxHeight;
-                        }
-                    }
-    
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(img, 0, 0, width, height);
-    
-                    // Convertir a base64 y comprimir la imagen a JPEG
-                    canvas.toBlob((blob) => {
-                        const readerBlob = new FileReader();
-                        readerBlob.onloadend = () => {
-                            const base64data = readerBlob.result.split(',')[1];
-                            resolve(base64data);
-                        };
-                        blob && readerBlob.readAsDataURL(blob);
-                    }, 'image/png', 1); // 0.8 es la calidad de compresión (0 a 1)
-                };
-                img.onerror = reject;
-            };
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
-    };
-
-
     //Función para enviar datos al servidor:
     const handleSubmit = async (e) => {
         e.preventDefault();//Evitamos que la función actue por defecto.
-  
         //Creamos el DTO de comida
-        const comidaDTO = {
-            nombre,
-            descripcion,
-            precio,
-            imagenDTO :{
-                nombre: imagen.name,
-                tipo: 'image/png',
-                datos: await getImagenBase64(imagen), //Comprimimos la imagen
-            }
-        };
-
-        if (comida && comida.id) {
-            comidaDTO.id = comida.id;
-        }
-
+        const comidaDTO =  await crearComidaDTO(nombre,descripcion,precio,imagen,comida)
         //Determinamos la URL a enviar según el tipo de comida.
-        let url = '';
-        switch (tipoComida) {
-            case '1':
-                url = '/menu/hamburguesas';
-                break;
-            case '2':
-                url = '/menu/bebidas';
-                break;
-            case '3':
-                url = '/menu/postres';
-                break;
-            default:
-                return;
-        }
-
-        //Tratamos de enviar la solicitud con fetch
-        try{
-            const metodoHTTP= comidaDTO.id? 'PUT' : 'POST';
-
-            const urlFetch = comidaDTO.id
-            ? `http://localhost:8080${url}/${comidaDTO.id}` // Actualiza la comida con el ID
-            : `http://localhost:8080${url}`; // Crea una nueva comida
-
-            const response = await fetch (urlFetch,{
-                method: metodoHTTP,
-                headers:{
-                    'Content-Type':'application/json',
-                },
-                body: JSON.stringify(comidaDTO),
-            });
-
-            if (response.ok){
-                window.alert('Comida guardada con éxito');
-                onComidaCargada();
-            }
-            else{
-                window.alert('Error al guardar la comida en la solicitud');
-            }
-
-        } catch(error){
-            window.alert('Error al guardar la comida');
-        }
-    };
+        await comidaSubmit(comidaDTO,tipoComida,onComidaCargada)
+    }
 
     //Cada vez que se produce un cambio en comida, se actualiza dicho cambio
     useEffect(() => {
@@ -194,7 +86,6 @@ const ModalForm=({comida,onComidaCargada})=>{
             </div>
         </div>
     </div>);
-};
-
+}
 
 export default ModalForm;

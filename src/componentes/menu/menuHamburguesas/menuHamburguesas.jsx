@@ -2,6 +2,9 @@ import React, {useState,useEffect} from "react";
 import BotonAgregar from '../botones/botonAgregar/botonAgregar';
 import ModalForm from '../../modalForm/modalForm';
 import CardComida from '../cardComida/CardComida';
+import { obtenerComida } from "../../../utils/obtenerComidaUtils";
+import { eliminarComida } from "../../../utils/eliminarComidaUtils";
+import { dividirEnFilas } from "../../../utils/dividirEnFilasUtils";
 import '../menuComidaStyles.css'
 
 const MenuHamburguesas = () =>{
@@ -10,34 +13,19 @@ const MenuHamburguesas = () =>{
     const [error, setError] = useState(null);
     const [comidaSeleccionada, setComidaSeleccionada] = useState(null);
 
+   
     const obtenerHamburguesas = async () => {
         try {
-            const response = await fetch('http://localhost:8080/menu/hamburguesas');
-
-            // Verifica si la respuesta es correcta (código de estado 200-299)
-            if (!response.ok) {
-                throw new Error('Error en la respuesta del servidor');
-            }
-
-            //Obtenemos el json de la respuesta,
-            const data = await response.json();
-
-            //Actualizamos el estado de hamburguesas.
+            const data = await obtenerComida('hamburguesas');
             setHamburguesas(data);
         } catch (error) {
-            setError('Error al obtener hamburguesas');
+            setError(error.message);
         }
     };
 
-    const eliminarComida = async (id) => {
+    const eliminarHamburguesa = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/menu/hamburguesas/${id}`,
-                { method: 'DELETE' });
-
-            if (!response.ok) {
-                throw new Error('Error en la respuesta del servidor');
-            }
-
+            await eliminarComida(id,'hamburguesas')
             //Actualizamos el estado de hamburguesas.
             setHamburguesas(hamburguesas.filter(comida => comida.id !== id));
         } catch (error) {
@@ -45,25 +33,14 @@ const MenuHamburguesas = () =>{
         }
     };
 
-
-    const editarComida = (comida)=>{
+    const editarHamburguesa = (comida)=>{
         setComidaSeleccionada(comida);
     };
-
 
     //Usamos useEffect para actualizar el estado del componente cuando este se renderiza
     useEffect(() => {
         obtenerHamburguesas();
     },[])
-
-    const dividirEnFilas = (comidas, tamanoFila)=>{
-        const filas = [];
-        for (let i=0; i<comidas.length; i+= tamanoFila){
-            filas.push(comidas.slice(i,i+tamanoFila));
-        }
-        return filas;
-    }
-
 
     return (
         <section id="seccionMenu" className="d-flex flex-column justify-content-start align-content-center">
@@ -83,7 +60,7 @@ const MenuHamburguesas = () =>{
                 {dividirEnFilas(hamburguesas, 3).map((fila, filaIndex) => (
                     <div className="row row-comidas" key={filaIndex}>
                         {fila.map((hamburguesa, index) => (
-                            <CardComida key={index} comida={hamburguesa} onEliminarComida={eliminarComida} onEditarComida={editarComida}/>))}
+                            <CardComida key={index} comida={hamburguesa} onEliminarComida={eliminarHamburguesa} onEditarComida={editarHamburguesa}/>))}
                     </div>
             ))}
         </div>
