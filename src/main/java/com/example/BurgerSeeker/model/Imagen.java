@@ -15,14 +15,14 @@ public class Imagen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="nombre_archivo",nullable = false)
+    @Column(name="nombre_archivo")
     private String nombre;
 
-    @Column(name="tipo_archivo", nullable = false)
+    @Column(name="tipo_archivo")
     private String tipo;
 
     @Lob
-    @Column(name="datos_imagen",nullable = false, columnDefinition = "LONGBLOB")
+    @Column(name="datos_imagen", columnDefinition = "LONGBLOB")
     private byte[] datos;
 
 }

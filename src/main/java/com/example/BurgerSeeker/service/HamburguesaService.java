@@ -30,10 +30,13 @@ public class HamburguesaService implements ComidaService<Hamburguesa,Hamburguesa
         Hamburguesa hamburguesa = comidaRepository.findById(hamburguesaDTO.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Comida no encontrada"));
 
-        if(hamburguesaDTO.getImagenDTO()!=null){
-            imagenService.eliminarImagen(hamburguesa.getImagen().getId());
+        if (hamburguesaDTO.getImagenDTO() != null) {
+            if (hamburguesa.getImagen() != null) {
+                imagenService.eliminarImagen(hamburguesa.getImagen().getId());
+            }
             hamburguesa.setImagen(imagenService.convertToEntity(hamburguesaDTO.getImagenDTO()));
         }
+
         hamburguesa.setNombre(hamburguesaDTO.getNombre());
         hamburguesa.setDescripcion(hamburguesaDTO.getDescripcion());
         hamburguesa.setPrecio(hamburguesaDTO.getPrecio());
@@ -72,7 +75,11 @@ public class HamburguesaService implements ComidaService<Hamburguesa,Hamburguesa
         hamburguesa.setNombre(hamburguesaDTO.getNombre());
         hamburguesa.setDescripcion(hamburguesaDTO.getDescripcion());
         hamburguesa.setPrecio(hamburguesaDTO.getPrecio());
-        hamburguesa.setImagen(imagenService.convertToEntity(hamburguesaDTO.getImagenDTO()));
+        if (hamburguesaDTO.getImagenDTO()!=null){
+            hamburguesa.setImagen(imagenService.convertToEntity(hamburguesaDTO.getImagenDTO()));
+        } else {
+            hamburguesa.setImagen(null); // Deja la imagen como nula si no se proporcionó
+        }
 
         return hamburguesa;
     }
@@ -84,7 +91,11 @@ public class HamburguesaService implements ComidaService<Hamburguesa,Hamburguesa
         hamburguesaDTO.setNombre(hamburguesa.getNombre());
         hamburguesaDTO.setDescripcion(hamburguesa.getDescripcion());
         hamburguesaDTO.setPrecio(hamburguesa.getPrecio());
-        hamburguesaDTO.setImagenDTO(imagenService.convertToDTO(hamburguesa.getImagen()));
+        if (hamburguesa.getImagen()!=null) {
+            hamburguesaDTO.setImagenDTO(imagenService.convertToDTO(hamburguesa.getImagen()));
+        }else{
+            hamburguesaDTO.setImagenDTO(null);
+        }
 
         return hamburguesaDTO;
     }
