@@ -1,21 +1,17 @@
 import { getImagenBase64 } from "./imageUtils";
 
-export const crearComidaDTO = async (nombre, descripcion, precio, imagen, comida) => {
+export const crearComidaDTO = async (nombre, descripcion, precio, imagen) => {
+
     const comidaDTO = {
         nombre,
         descripcion,
         precio,
-        imagenDTO: {
+        imagenDTO: imagen ? {
             nombre: imagen.name,
             tipo: 'image/png',
             datos: await getImagenBase64(imagen), // Comprimimos la imagen
-        }
+        } : null // Si la imagen es null, asignamos null a imagenDTO
     };
-
-    //Verifico si la comida ya existe, si es el caso, el DTO que devuelvo posee ID
-    if (comida && comida.id) {
-        comidaDTO.id = comida.id;
-    }
 
     return comidaDTO;
 };

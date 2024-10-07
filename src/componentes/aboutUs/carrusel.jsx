@@ -50,11 +50,14 @@ const Carrusel = () => {
                 <div class="carousel-inner">
                     {hamburguesas.map((hamburguesa, index) => (
                         <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={hamburguesa.id}>
-                            <img
-                                className="w-100 d-block img-carrusel"
-                                src={`data:${hamburguesa.imagenDTO.tipo};base64,${hamburguesa.imagenDTO.datos}`}
-                                alt={hamburguesa.nombre}
-                            />
+                            {hamburguesa.imagenDTO && (
+                                <img
+                                    className="imagen-card-comida"
+                                    src={`data:${hamburguesa.imagenDTO.tipo};base64,${hamburguesa.imagenDTO.datos}`}
+                                    alt={hamburguesa.nombre}
+                                />
+                            )}
+
                         </div>
                     ))}
                 </div>

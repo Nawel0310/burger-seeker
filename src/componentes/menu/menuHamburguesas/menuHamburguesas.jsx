@@ -5,6 +5,7 @@ import CardComida from '../cardComida/CardComida';
 import { obtenerComida } from "../../../utils/obtenerComidaUtils";
 import { eliminarComida } from "../../../utils/eliminarComidaUtils";
 import { dividirEnFilas } from "../../../utils/dividirEnFilasUtils";
+import HamburguesaService from "../../../services/HamburguesaService";
 import '../menuComidaStyles.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -15,27 +16,32 @@ const MenuHamburguesas = () =>{
     const [error, setError] = useState(null);
     const [comidaSeleccionada, setComidaSeleccionada] = useState(null);
 
+
+    const agregarNuevaComida = () => {
+        setComidaSeleccionada(null); // Resetea el valor al hacer clic en "Agregar"
+    };
+
    
     const obtenerHamburguesas = async () => {
-        try {
-            const data = await obtenerComida('hamburguesas');
-            setHamburguesas(data);
-        } catch (error) {
-            setError(error.message);
-        }
+        HamburguesaService.getAllComidas().then(response => {
+            setHamburguesas(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+   
     };
+
+   
 
     const eliminarHamburguesa = async (id) => {
-        try {
-            await eliminarComida(id,'hamburguesas')
-            //Actualizamos el estado de hamburguesas.
+        HamburguesaService.deleteComida(id).then(() => {
             setHamburguesas(hamburguesas.filter(comida => comida.id !== id));
-        } catch (error) {
-            setError('Error al eliminar la comida.')
-        }
+        }).catch(error => {
+            window.alert('Error al eliminar la comida');
+        })
     };
 
-    const editarHamburguesa = (comida)=>{
+    const seleccionarComidaParaEditar = (comida)=>{
         setComidaSeleccionada(comida);
     };
 
@@ -49,6 +55,7 @@ const MenuHamburguesas = () =>{
     },[])
 
 
+
     return (
         <section id="seccionMenu" className="d-flex flex-column justify-content-start align-content-center">
         <div className="container">
@@ -59,7 +66,7 @@ const MenuHamburguesas = () =>{
                 </div>
                 <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 col-xxl-2 d-flex flex-row justify-content-center align-items-center align-content-center col-botones">
                     <div>
-                    <BotonAgregar></BotonAgregar>
+                    <BotonAgregar onAgregar={agregarNuevaComida}></BotonAgregar>
                     <ModalForm comida={comidaSeleccionada} onComidaCargada={obtenerHamburguesas}></ModalForm>
                     </div>
                 </div>
@@ -71,11 +78,13 @@ const MenuHamburguesas = () =>{
                             key={index} 
                             comida={hamburguesa} 
                             onEliminarComida={eliminarHamburguesa} 
-                            onEditarComida={editarHamburguesa}
+                            onEditarComida={seleccionarComidaParaEditar}
                             data-aos="fade-up"   
                             data-aos-delay={`${index * 100}`}
                             />))
                             }
+                            
+                            
                     </div>
             ))}
         </div>

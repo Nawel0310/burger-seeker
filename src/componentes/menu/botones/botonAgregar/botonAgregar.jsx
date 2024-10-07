@@ -1,6 +1,6 @@
 import './botonAgregarStyles.css'
 
-const BotonAgregar = () => {
+const BotonAgregar = ({ onAgregar }) => {
     return (
         <button
         id="btn-agregar-comida"
@@ -8,6 +8,7 @@ const BotonAgregar = () => {
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#modalForm"
+        onClick={onAgregar}
     >
         Agregar Comida
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor">

@@ -12,19 +12,33 @@ const CardComida = ({comida, onEliminarComida, onEditarComida,...props}) => {
         }
     }
 
+    const handleEditarComida = () =>{
+        onEditarComida(comida);
+    }
+
     return (
         <div class="col col-card-menu" {...props}>
             <div class="card border-warning card-menu" data-bs-theme="dark">
                 <div class="card-body card-menu-body">
                     <div class="d-flex justify-content-center">
-                        <img class="imagen-card-comida" src={`data:${comida.imagenDTO.tipo};base64,${comida.imagenDTO.datos}`} alt={comida.nombre} /></div>
+
+                        {comida.imagenDTO && (
+                            <img
+                                className="imagen-card-comida"
+                                src={`data:${comida.imagenDTO.tipo};base64,${comida.imagenDTO.datos}`}
+                                alt={comida.nombre}
+                            />
+                        )}
+
+                        </div>
                     <h2 class="card-title titulo card-menu-titulo">{comida.nombre}</h2>
+                    
                     <h4 class="card-subtitle mb-2 subtitulo menu-card-subtitulo">${comida.precio}</h4>
                     <p class="card-text parrafo">{comida.descripcion}</p>
                     <div class="d-flex flex-row justify-content-evenly">
-                        <BotonEditar comida={comida} onEditarComidaBtn={onEditarComida}></BotonEditar>
+                        <BotonEditar onEditarComidaBtn={handleEditarComida}></BotonEditar>
                         <BotonEliminar onEliminarComidaBtn={handleEliminarComida}></BotonEliminar>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>)
