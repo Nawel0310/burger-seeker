@@ -6,6 +6,7 @@ import Footer from './componentes/footer/footer';
 import ModalAvisoNavbar from './componentes/modalAvisoNavbar/modalAvisoNavbar';
 import AboutUs from './componentes/aboutUs/aboutUs';
 import MenuHamburguesas from './componentes/menu/menuHamburguesas/menuHamburguesas';
+import Ubicacion from './componentes/ubicacion/ubicacion';
 
 //Siempre importar estos al final, en este orden!
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Hero />} />
         <Route path ="/sobre-nosotros"  element={<AboutUs/>}/>
         <Route path="menu-hamburguesas" element={<MenuHamburguesas/>}/>
+        <Route path="/ubicaciones" element={<Ubicacion/>}/>
 
       </Routes>
 

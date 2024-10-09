@@ -2,8 +2,6 @@ import React, {useState,useEffect} from "react";
 import BotonAgregar from '../botones/botonAgregar/botonAgregar';
 import ModalForm from '../../modalForm/modalForm';
 import CardComida from '../cardComida/CardComida';
-import { obtenerComida } from "../../../utils/obtenerComidaUtils";
-import { eliminarComida } from "../../../utils/eliminarComidaUtils";
 import { dividirEnFilas } from "../../../utils/dividirEnFilasUtils";
 import HamburguesaService from "../../../services/HamburguesaService";
 import '../menuComidaStyles.css'

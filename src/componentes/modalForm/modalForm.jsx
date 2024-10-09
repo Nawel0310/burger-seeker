@@ -1,7 +1,6 @@
 import './modalFormStyles.css'
 import React, {useState,useEffect} from 'react';
 import { crearComidaDTO } from '../../utils/crearComidaUtil';
-import { comidaSubmit } from '../../utils/comidaSubmitUtils';
 import HamburguesaService from '../../services/HamburguesaService';
 
 const ModalForm=({comida,onComidaCargada})=>{

@@ -23,7 +23,7 @@ const Navbar = () =>{
                     </div>
                 </li>
                 <li className="nav-item d-flex flex-column justify-content-center"><Link className="nav-link fs-5 navbar-item" to="/ubicaciones">Ubicaciones</Link></li>
-                <li className="nav-item d-flex flex-column justify-content-center"><Link className="nav-link fs-5 navbar-item" to="/contacti">Contacto</Link></li>
+                <li className="nav-item d-flex flex-column justify-content-center"><Link className="nav-link fs-5 navbar-item" to="/contacto">Contacto</Link></li>
             </ul>
             <Link className="btn parrafo btn-generico btn-degradado" role="button" to="/ordenar">Ordenar</Link>
         </div>

@@ -1,0 +1,24 @@
+#ubicaciones {
+    height: 45rem;
+    background: url("../../assets/ubicaciones_background.webp") center / cover no-repeat;
+  }
+  
+  #titulo-ubicaciones {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #FFF078, #FFDB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #subtitulo-ubicaciones {
+    color: #ebe9fc;
+    font-weight: 350!important;
+  }
+  
+  #col-ubicacion {
+    margin-top: 1rem;
+  }
+
+  #map {
+    border: 2px solid #FFDB00 ;
+  }
