@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +12,7 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "compress.js": "^2.1.2",
+    "emailjs-com": "^3.2.0",
     "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

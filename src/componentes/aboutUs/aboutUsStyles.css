@@ -1,5 +1,7 @@
 
 #seccionAboutUs {
+  min-height: 45rem;
+  max-height: inherit;
     background: url("../../assets/about_us_background.webp") center / cover no-repeat;
   }
   

@@ -4,7 +4,7 @@ import './CardComidaStyles.css'
 
 
 
-const CardComida = ({comida, onEliminarComida, onEditarComida,...props}) => {
+const CardComida = ({comida,tipoComida, onEliminarComida, onEditarComida,...props}) => {
 
     const handleEliminarComida=()=>{
         if (window.confirm(`¿Está seguro que desea eliminar "${comida.nombre}"?`)){
@@ -16,6 +16,15 @@ const CardComida = ({comida, onEliminarComida, onEditarComida,...props}) => {
         onEditarComida(comida);
     }
 
+    const obtenerClaseImagen = () => {
+      if (tipoComida == 'bebida') {
+            return "imagen-card-bebida";
+        }
+        else{
+            return "imagen-card-comida"; // Clase por defecto en caso de otros tipos
+        }
+    };
+
     return (
         <div class="col col-card-menu" {...props}>
             <div class="card border-warning card-menu" data-bs-theme="dark">
@@ -24,7 +33,7 @@ const CardComida = ({comida, onEliminarComida, onEditarComida,...props}) => {
 
                         {comida.imagenDTO && (
                             <img
-                                className="imagen-card-comida"
+                                className={obtenerClaseImagen()}
                                 src={`data:${comida.imagenDTO.tipo};base64,${comida.imagenDTO.datos}`}
                                 alt={comida.nombre}
                             />

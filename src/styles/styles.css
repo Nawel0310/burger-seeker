@@ -85,7 +85,7 @@
   }
   
   #dropdown-menu-background {
-    background: linear-gradient(#0F0F0F 1%, #232D3F 150%), #232D3F;
+    background-color: #0F0F0F;
     border-style: solid;
     border-color: #FF8F00;
     border-radius: 15px;
@@ -147,6 +147,8 @@
   }
 
   #hero{
+    min-height: 45rem;
+  max-height: inherit;
     background: url('/src/assets/hero_background.webp') center / cover no-repeat;
   }
 

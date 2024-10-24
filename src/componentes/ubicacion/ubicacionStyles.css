@@ -1,5 +1,6 @@
 #ubicaciones {
-    height: 45rem;
+  min-height: 45rem;
+  max-height: inherit;
     background: url("../../assets/ubicaciones_background.webp") center / cover no-repeat;
   }
   

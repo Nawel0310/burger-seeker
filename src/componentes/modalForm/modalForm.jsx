@@ -2,15 +2,16 @@ import './modalFormStyles.css'
 import React, {useState,useEffect} from 'react';
 import { crearComidaDTO } from '../../utils/crearComidaUtil';
 import HamburguesaService from '../../services/HamburguesaService';
+import BebidaService from '../../services/BebidaService';
+import PostreService from '../../services/PostreService';
 
-const ModalForm=({comida,onComidaCargada})=>{
+const ModalForm=({comida,tipoComida,onComidaCargada})=>{
 
     // Si comida está definida, usamos sus datos, sino se deja valores por defecto
     const [nombre, setNombre] = useState(comida ? comida.nombre : '');
     const [descripcion, setDescripcion] = useState(comida ? comida.descripcion : '');
     const [precio, setPrecio] = useState(comida ? comida.precio : 0);
     const [imagen, setImagen] = useState(null);
-    const [tipoComida, setTipoComida] = useState('1');
 
 
     //Función para enviar datos al servidor:
@@ -20,22 +21,76 @@ const ModalForm=({comida,onComidaCargada})=>{
         //Creamos el DTO de comida
         const comidaDTO = await crearComidaDTO(nombre, descripcion, precio, imagen)
 
-        if (comida) {
-            HamburguesaService.updateComida(comidaDTO,comida.id).then(() => {
-                window.alert('Comida actualizada con éxito');
-                onComidaCargada();//Funcion para actualizar el estado
-            }).catch(error => {
-                window.alert('Error al actualizar la comida');
-            })
 
-        } else {
-            HamburguesaService.createComida(comidaDTO).then(() => {
-                window.alert('Comida guardada con éxito');
-                onComidaCargada();//Funcion para actualizar el estado
-            }).catch(error => {
-                window.alert('Error al guardar la comida');
-            })
-        }
+
+        switch (tipoComida) {
+            //En lugar de usar un switch, puede refactorizarse para que se reciba
+            //un parametro "comida" y dicho parametro llame al servicio correspondiente
+            //(hamburguesaService y bebidaService pasarian a ser solo "comidaService")
+            case 'hamburguesa':
+                if (comida) {
+                    HamburguesaService.updateComida(comidaDTO, comida.id).then(() => {
+                        window.alert('Comida actualizada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al actualizar la comida');
+                    })
+
+                } else {
+                    HamburguesaService.createComida(comidaDTO).then(() => {
+                        window.alert('Comida guardada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al guardar la comida');
+                    })
+                }
+                break;
+
+                case 'bebida':
+                if (comida) {
+                    BebidaService.updateComida(comidaDTO, comida.id).then(() => {
+                        window.alert('Comida actualizada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al actualizar la comida');
+                    })
+
+                } else {
+                    BebidaService.createComida(comidaDTO).then(() => {
+                        window.alert('Comida guardada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al guardar la comida');
+                    })
+                }
+                break;
+
+
+                case 'postre':
+                if (comida) {
+                    PostreService.updateComida(comidaDTO, comida.id).then(() => {
+                        window.alert('Comida actualizada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al actualizar la comida');
+                    })
+
+                } else {
+                    PostreService.createComida(comidaDTO).then(() => {
+                        window.alert('Comida guardada con éxito');
+                        onComidaCargada();//Funcion para actualizar el estado
+                    }).catch(error => {
+                        window.alert('Error al guardar la comida');
+                    })
+                }
+                break;
+
+                default:
+                    window.alert('Error, la comida no es valida');
+                    break;
+    }
+
+
     }
 
 
@@ -47,6 +102,7 @@ const ModalForm=({comida,onComidaCargada})=>{
             setDescripcion(comida.descripcion);
             setPrecio(comida.precio);
             setImagen(comida.imagen);
+            
         }
         else {
             // Si no hay una comida seleccionada (agregar nueva comida)
@@ -56,14 +112,13 @@ const ModalForm=({comida,onComidaCargada})=>{
 
     const title = ()=>{
         if(!comida){
-            return <h4 id="titulo-modal" className="modal-title subtitulo">Cargar comida</h4>
+            return <h4 id="titulo-modal" className="modal-title subtitulo">Cargar {tipoComida}</h4>
         }
         else{
-            return <h4 id="titulo-modal" className="modal-title subtitulo">Actualizar comida</h4>
+            return <h4 id="titulo-modal" className="modal-title subtitulo">Actualizar {tipoComida}</h4>
         }
 
     }
-
 
     //Limpiar los valores del formulario:
     const resetForm = () => {
@@ -72,7 +127,6 @@ const ModalForm=({comida,onComidaCargada})=>{
         setPrecio(0);
         setImagen(null);
     };
-
 
     return(
         <div
@@ -114,14 +168,7 @@ const ModalForm=({comida,onComidaCargada})=>{
                             <label className="form-label titulo-label">Imagen:</label>
                             <input className="form-control img-input" type="file" onChange={(e) =>  setImagen(e.target.files[0])} required/>
                         </div>
-                        <div className="label-div">
-                            <label className="form-label titulo-label">Comida a cargar:</label>
-                            <select className="form-select" value={tipoComida} onChange={(e) => setTipoComida(e.target.value)}>
-                                <option value="1" selected>Hamburguesa</option>
-                                <option value="2">Bebida</option>
-                                <option value="3">Postre</option>
-                            </select>
-                        </div>
+                        
                         <div className="d-flex flex-row justify-content-end align-content-center">
                             <button className="btn btn-outline-warning btn-generico parrafo btn-modal" type="button" data-bs-dismiss="modal">Cancelar</button>
                             <button className="btn btn-warning btn-generico btn-degradado parrafo btn-modal"  type="submit" data-bs-dismiss="modal" onClick={(e) => handleSubmit(e) && resetForm()} >Cargar Comida </button>
