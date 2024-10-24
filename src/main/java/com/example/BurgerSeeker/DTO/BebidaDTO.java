@@ -1,5 +1,14 @@
 package com.example.BurgerSeeker.DTO;
 
-public class BebidaDTO extends ComidaDTO {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class BebidaDTO implements ComidaDTO {
+    private Integer id;
+    private String nombre;
+    private Float precio;
+    private String descripcion;
+    private ImagenDTO imagenDTO;
 }

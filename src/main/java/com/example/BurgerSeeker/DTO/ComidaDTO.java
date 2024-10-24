@@ -1,14 +1,23 @@
 package com.example.BurgerSeeker.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
+public interface ComidaDTO {
+    Integer getId();
 
-@Getter
-@Setter
-public class ComidaDTO  {
-    private Integer id;
-    private String nombre;
-    private Float precio;
-    private String descripcion;
-    private ImagenDTO imagenDTO;
+    String getNombre();
+
+    Float getPrecio();
+
+    String getDescripcion();
+
+    ImagenDTO getImagenDTO();
+
+    void setId(Integer id);
+
+    void setNombre(String nombre);
+
+    void setPrecio(Float precio);
+
+    void setDescripcion(String descripcion);
+
+    void setImagenDTO(ImagenDTO imagenDTO);
 }
