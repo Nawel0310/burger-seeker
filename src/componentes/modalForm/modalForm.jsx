@@ -21,8 +21,6 @@ const ModalForm=({comida,tipoComida,onComidaCargada})=>{
         //Creamos el DTO de comida
         const comidaDTO = await crearComidaDTO(nombre, descripcion, precio, imagen)
 
-
-
         switch (tipoComida) {
             //En lugar de usar un switch, puede refactorizarse para que se reciba
             //un parametro "comida" y dicho parametro llame al servicio correspondiente

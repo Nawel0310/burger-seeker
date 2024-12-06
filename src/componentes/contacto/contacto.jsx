@@ -33,8 +33,8 @@ const Contacto =()=>{
     <section id="contacto">
         <div id="container-contacto" class="container-fluid">
             <div id="fila-contacto" class="row">
-                <div id="col-contacto-redes" class="col-md-6 d-flex flex-column justify-content-center align-items-center align-content-center">
-                    <h1 class="text-capitalize titulo titulo-contacto">¡Conéctate con Nosotros!</h1>
+                <div id="col-contacto-redes" class="col-auto col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 d-flex flex-column justify-content-center align-items-center align-content-center">
+                    <h1 class="text-uppercase titulo titulo-contacto">¡Conéctate con Nosotros!</h1>
                     <h4 class="subtitulo subtitulo-contacto">¿Tienes una pregunta rápida o quieres saber más de nuestro menú?</h4>
                     <p class="parrafo parrafo-contacto">Estamos a solo un clic de distancia. Escríbenos directamente por <strong>WhatsApp</strong> o síguenos en <strong>Instagram</strong> para estar al tanto de nuestras últimas novedades, eventos y promociones exclusivas.</p>
                     <div class="d-flex flex-column justify-content-center align-items-start">
@@ -58,8 +58,8 @@ const Contacto =()=>{
                         </div>
                     </div>
                 </div>
-                <div id="col-contacto-mail" class="col d-flex flex-column justify-content-center align-items-center align-content-center">
-                    <h1 id="titulo-contacto-mail" class="text-capitalize titulo titulo-contacto">Para propuestas y colaboraciones</h1>
+                <div id="col-contacto-mail" class="col-auto col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 d-flex flex-column justify-content-center align-items-center align-content-center">
+                    <h1 id="titulo-contacto-mail" class="text-uppercase titulo titulo-contacto">Para propuestas y colaboraciones</h1>
                     <h4 id="subtitulo-contacto-mail" class="subtitulo subtitulo-contacto">¿Posees una propuesta comercial o una consulta más formal?</h4>
                     <p id="parrafo-subtitulo-contacto" class="parrafo parrafo-contacto">Para alianzas, eventos o cualquier consulta formal, por favor, escríbenos directamente a nuestro correo electrónico.</p>
                     <div>

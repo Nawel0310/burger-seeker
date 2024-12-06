@@ -30,8 +30,6 @@ const MenuHamburguesas = () =>{
    
     };
 
-   
-
     const eliminarHamburguesa = async (id) => {
         HamburguesaService.deleteComida(id).then(() => {
             setHamburguesas(hamburguesas.filter(comida => comida.id !== id));

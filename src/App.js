@@ -10,11 +10,15 @@ import MenuBebidas from './componentes/menu/menuBebidas/menuBebidas';
 import MenuPostres from './componentes/menu/menuPostres/menuPostres';
 import Ubicacion from './componentes/ubicacion/ubicacion';
 import Contacto from './componentes/contacto/contacto';
+import Login from './componentes/login/login';
+import Register from './componentes/register/register';
+import PasswordForget from './componentes/passwordForget/passwordForget';
 
 //Siempre importar estos al final, en este orden!
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './styles/styles.css';
+
 
 
 function App() {
@@ -32,6 +36,9 @@ function App() {
         <Route path="menu-postres" element={<MenuPostres/>}/>
         <Route path="/ubicacion" element={<Ubicacion/>}/>
         <Route path ="/contacto" element={<Contacto/>}/>
+        <Route path ="/login" element={<Login/>}/>
+        <Route path ="/register" element={<Register/>}/>
+        <Route path ="/password-forget" element={<PasswordForget/>}/>
 
       </Routes>
 

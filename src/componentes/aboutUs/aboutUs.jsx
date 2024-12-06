@@ -24,7 +24,7 @@ const AboutUs = () => {
                 <div className="row gy-4 gy-md-0">
                     <div className="col-md-6 d-md-flex align-items-md-center">
                         <div id="div-about-us">
-                            <h2 data-aos="fade-down" data-aos-duration="750"  id="tituloAboutUs" className="text-uppercase fw-bold titulo">Un poco <br />sobre nosotros</h2>
+                            <h2 data-aos="fade-down" data-aos-duration="750"  id="tituloAboutUs" className="text-uppercase titulo">Un poco <br />sobre nosotros</h2>
                             <p className="my-3 subtitulo subtitulo-about-us">Nos ocupamos de cubrir todos los aspectos que consideramos fundamentales para una experiencia memorable en nuestro local</p>
                             
                             <div data-aos="fade-right" data-aos-duration="750"  className="d-flex flex-row flex-grow-0 align-items-center align-content-center list-item"><img className="img-icon-about-us" src={fastFood} />

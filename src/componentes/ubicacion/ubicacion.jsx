@@ -8,7 +8,7 @@ const Ubicacion = () => {
             <div className="container">
                 <div className="row">
                     <div id="col-ubicacion" className="col-md-12">
-                        <h1 id="titulo-ubicaciones" className="titulo">Nuestra Ubicación</h1>
+                        <h1 id="titulo-ubicaciones" className="titulo text-uppercase">Nuestra Ubicación</h1>
                         <h5 id="subtitulo-ubicaciones" className="subtitulo">¡Descubre cómo llegar y visítanos hoy!</h5>
                     </div>
                 </div>

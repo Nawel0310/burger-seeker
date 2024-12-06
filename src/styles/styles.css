@@ -160,3 +160,13 @@
     margin-bottom: 0.5rem;
     font-weight:650;
   }
+
+  .link-sign-in {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none!important;
+  }
+  
+  .link-sign-in:hover {
+    color: #FFF078!important;
+  }  
